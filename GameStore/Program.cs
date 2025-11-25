@@ -35,6 +35,27 @@ app.MapPost("create-games",(CreateGamesDto newGame) =>
         games.Add(game);
 
         return Results.CreatedAtRoute(GetGamesEndPointName, new {id = game.Id},game);
+}); 
+
+// PUT 
+
+app.MapPut("update-games/{id}",(int id, UpdatedGamesDto updatedGames) =>
+{
+    var index = games.FindIndex(game => game.Id == id);
+        if (index == -1)
+    {
+        return Results.NotFound();
+    }
+
+    games[index] = new GameDto(
+        id,
+        updatedGames.Name,
+        updatedGames.Genre,
+        updatedGames.Price,
+        updatedGames.ReleaseDate
+    );
+
+    return Results.NoContent();
 });
 
 

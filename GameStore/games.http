@@ -16,3 +16,14 @@ Content-Type: application/json
     "releaseDate":"2011-11-18"
 
 }
+
+###
+PUT http://localhost:5025/update-games/3
+Content-Type: application/json
+
+{
+    "name": "Call of Dutys.",
+    "genre": "FPS",
+    "price": 67.99,
+    "releaseDate": "2022-12-20"
+  }
